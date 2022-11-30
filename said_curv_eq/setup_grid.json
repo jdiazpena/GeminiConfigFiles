@@ -1,0 +1,13 @@
+{
+  "matlab": {
+    "arch": "win64",
+    "version": "9.11.0.1809720 (R2021b) Update 1"
+  },
+  "git": {
+    "version": "git version 2.33.0.windows.2",
+    "remote": "https://github.com/gemini3d/mat_gemini.git",
+    "branch": "main",
+    "commit": "v5.3.2-1-gd245176",
+    "porcelain": "true"
+  }
+}
