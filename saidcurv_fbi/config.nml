@@ -3,17 +3,17 @@
 &base
 ymd = 2008,3,26               ! year, month, day
 UTsec0 = 75600.0              ! start time in UT seconds
-tdur = 900.0                  ! duration of simulation in seconds
-dtout = 60.0                  ! how often to do file output
+tdur = 2400.0                  ! duration of simulation in seconds
+dtout = 30.0                  ! how often to do file output
 activ = 150.0,150.0,4.0       ! f107a,f107,Ap
 tcfl = 0.9                    ! target cfl number
-Teinf = 1500.0                ! exospheric electron temperature
+Teinf = 0.0                ! exospheric electron temperature-0.5e-8
 /
 
 &flags
 potsolve = 1        ! solve electrodynamics:   0 - no; 1 - electrostatic; 2 - inductive
 flagperiodic = 0    ! whether periodic
-flagoutput = 2      ! 1 - full parameter output
+flagoutput = 1      ! 1 - full parameter output
 /
 
 &setup
@@ -37,7 +37,7 @@ Efield_latwidth=0.05
 Efield_lonwidth=0.15
 Jtarg=1.0e-6
 Jtarg_function = "fac_said"
-eq_dir = '/mnt/d/gemini3DRuns/simresult/Laptop/LaptopW_said_curv_eq_fbi'
+eq_dir = '/mnt/f/gemini3druns/Desktop/DW_saidcurv_eq_fbi_15m_100122_noloss'
 /
 
 &files
@@ -47,7 +47,7 @@ indat_file = 'inputs/initial_conditions.h5'
 /
 
 &efield
-dtE0 = 60.0                         ! time step between electric field file inputs
+dtE0 = 30.0                         ! time step between electric field file inputs
 E0_dir = 'inputs/fields/'
 /
 
