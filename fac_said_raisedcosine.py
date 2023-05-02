@@ -11,8 +11,8 @@ def fac_said(E: xarray.Dataset, gridflag: int, flagdip: bool) -> xarray.Dataset:
         raise ValueError("for 3D sims only")
 
     # nonuniform in longitude
-    beta=0.75
-    T=1/30
+    beta=0.8
+    T=1/20
     f=E.mlon-E.mlonmean
     shapelon=0*f
 
