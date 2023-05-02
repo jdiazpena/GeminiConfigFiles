@@ -33,9 +33,9 @@ gridflag=0
 !precip_latwidth=0.15
 !precip_lonwidth=0.25
 
-Efield_latwidth=0.02 !0.0125, 0.05 standar
+Efield_latwidth=0.05
 Efield_lonwidth=0.15
-Jtarg=1.2e-6
+Jtarg=1.1e-6
 Jtarg_function = "fac_said"
 eq_dir = '/mnt/f/gemini3druns/DW_saidcurv_eq_fbi_100122_noloss'
 /
@@ -58,10 +58,19 @@ E0_dir = 'inputs/fields/'
 
 
 &precip_BG
-PhiWBG=0.015                   ! total energy flux (mW/m^2) 0.08
+PhiWBG=0.08                   ! total energy flux (mW/m^2)
 W0BG=1e3                      ! characteristic energy (eV)
 /
 
 &diffusion
 diffsolvetype = 2             ! type of diffusion solver to use:  1 - backward Euler; 2 - TRBDF2
 /
+
+
+!(optional - default off) Use glow to compute impact ionization, Cartesian grids only
+&glow
+flagglow = 1                ! use glow?  0 - no; 1 - yes
+dtglow = 5.0                ! how often to recall GLOW to compute ionization
+dtglowout = 60.0            ! ow often to do Glow file output
+/
+

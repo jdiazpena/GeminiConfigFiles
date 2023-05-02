@@ -47,7 +47,7 @@ indat_file = 'inputs/initial_conditions.h5'
 /
 
 &efield
-dtE0 = 30.0                         ! time step between electric field file inputs
+dtE0 = 15.0                         ! time step between electric field file inputs
 E0_dir = 'inputs/fields/'
 /
 

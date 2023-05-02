@@ -11,15 +11,24 @@ def fac_said(E: xarray.Dataset, gridflag: int, flagdip: bool) -> xarray.Dataset:
         raise ValueError("for 3D sims only")
 
     # nonuniform in longitude
-    shapelon = np.exp(
-        -((E.mlon - E.mlonmean) ** 2) / 2 / E.mlonsig ** 2
-    )
-    
+    beta=0.75
+    T=1/30
+    f=E.mlon-E.mlonmean
+    shapelon=0*f
+
+    for i in range(len(f)):
+        if abs(f[i])<(1-beta)/(2*T):
+            shapelon[i]=1
+        elif (1-beta)/(2*T)<abs(f[i]) and abs(f[i])<(1+beta)/(2*T):
+            shapelon[i]=0.5*(1+np.cos( (np.pi*T/beta)*(abs(f[i])-(1-beta)/(2*T)) ))
+        else:
+            shapelon[i]=0
+
 
     # nonuniform in latitude
-    shapelat = -0.7*np.exp(
+    shapelat = -np.exp(
         -((E.mlat - E.mlatmean - 1.5 * E.mlatsig) ** 2) / 2 / E.mlatsig ** 2
-    ) + 1.0*np.exp(-((E.mlat - E.mlatmean + 1.5 * E.mlatsig) ** 2) / 2 / E.mlatsig ** 2)
+    ) + 0.7*np.exp(-((E.mlat - E.mlatmean + 1.5 * E.mlatsig) ** 2) / 2 / E.mlatsig ** 2)
 
     for t in E.time[2:]:
         E["flagdirich"].loc[t] = 0

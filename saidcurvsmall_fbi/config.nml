@@ -17,8 +17,8 @@ flagoutput = 1      ! 1 - full parameter output
 /
 
 &setup
-dtheta=10.5
-dphi=100
+dtheta=7
+dphi=70
 lp=128
 lq=128
 lphi=96
@@ -33,11 +33,11 @@ gridflag=0
 !precip_latwidth=0.15
 !precip_lonwidth=0.25
 
-Efield_latwidth=0.02 !0.0125, 0.05 standar
+Efield_latwidth=0.025 !0.0125, 0.05 standar
 Efield_lonwidth=0.15
 Jtarg=1.2e-6
-Jtarg_function = "fac_said"
-eq_dir = '/mnt/f/gemini3druns/DW_saidcurv_eq_fbi_100122_noloss'
+Jtarg_function = "fac_said_gaussian"
+eq_dir = '/mnt/f/gemini3druns/saidcurvsmall_eq_05012023'
 /
 
 &files
@@ -58,7 +58,7 @@ E0_dir = 'inputs/fields/'
 
 
 &precip_BG
-PhiWBG=0.015                   ! total energy flux (mW/m^2) 0.08
+PhiWBG=0.014                   ! total energy flux (mW/m^2) 0.08
 W0BG=1e3                      ! characteristic energy (eV)
 /
 

@@ -26,9 +26,9 @@ def fac_said(E: xarray.Dataset, gridflag: int, flagdip: bool) -> xarray.Dataset:
 
 
     # nonuniform in latitude
-    shapelat = -np.exp(
+    shapelat = -0.7*np.exp(
         -((E.mlat - E.mlatmean - 1.5 * E.mlatsig) ** 2) / 2 / E.mlatsig ** 2
-    ) + 0.7*np.exp(-((E.mlat - E.mlatmean + 1.5 * E.mlatsig) ** 2) / 2 / E.mlatsig ** 2)
+    ) + 1.0*np.exp(-((E.mlat - E.mlatmean + 1.5 * E.mlatsig) ** 2) / 2 / E.mlatsig ** 2)
 
     for t in E.time[2:]:
         E["flagdirich"].loc[t] = 0
