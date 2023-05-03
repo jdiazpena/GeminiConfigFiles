@@ -2,7 +2,7 @@ import xarray
 import numpy as np
 
 
-def fac_said(E: xarray.Dataset, gridflag: int, flagdip: bool) -> xarray.Dataset:
+def fac_said_gaussian(E: xarray.Dataset, gridflag: int, flagdip: bool) -> xarray.Dataset:
     """
     for 3D sim, FAC up/down 0.5 degree FWHM
     """
