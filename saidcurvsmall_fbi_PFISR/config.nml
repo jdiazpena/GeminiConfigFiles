@@ -3,7 +3,7 @@
 &base
 ymd = 2006,3,26               ! year, month, day
 UTsec0 = 27000.0              ! start time in UT seconds
-tdur = 630.0                  ! duration of simulation in seconds
+tdur = 900.0                  ! duration of simulation in seconds
 dtout = 15.0                  ! how often to do file output
 activ = 150.0,150.0,4.0       ! f107a,f107,Ap
 tcfl = 0.9                    ! target cfl number
@@ -25,7 +25,7 @@ lphi=96
 altmin=80e3
 glat=63
 glon=-147.47
-gridflag=0
+gridflag=1
 
 !E0precip=300
 !Qprecip=1
@@ -37,7 +37,7 @@ Efield_latwidth=0.025 !0.0125, 0.05 standar
 Efield_lonwidth=0.15
 Jtarg=1.2e-6
 Jtarg_function = "fac_said_gaussian"
-eq_dir = '/mnt/f/gemini3druns/saidcurvsmall_eq_230501'
+eq_dir = '/mnt/f/gemini3druns/saidcurvsmall_eq_PFISR_230503'
 /
 
 &files

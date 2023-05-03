@@ -18,14 +18,14 @@ flagoutput = 1      ! 1 - full parameter output
 
 &setup
 dtheta=7.5
-dphi=75
+dphi=75.0
 lp=48
 lq=64
 lphi=16
 altmin=80e3
-glat=63
+glat=63.0
 glon=-147.47
-gridflag=0
+gridflag=1
 nmf=5e11
 nme=2e11
 /

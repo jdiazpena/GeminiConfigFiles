@@ -37,7 +37,7 @@ Efield_latwidth=0.02 !0.0125, 0.05 standar
 Efield_lonwidth=0.15
 Jtarg=1.2e-6
 Jtarg_function = "fac_said"
-eq_dir = '/mnt/f/gemini3druns/DW_saidcurv_eq_fbi_100122_noloss'
+eq_dir = '/mnt/f/gemini3druns/saidcurv_eq_230503'
 /
 
 &files
@@ -58,7 +58,7 @@ E0_dir = 'inputs/fields/'
 
 
 &precip_BG
-PhiWBG=0.015                   ! total energy flux (mW/m^2) 0.08
+PhiWBG=0.014                   ! total energy flux (mW/m^2) 0.08
 W0BG=1e3                      ! characteristic energy (eV)
 /
 
