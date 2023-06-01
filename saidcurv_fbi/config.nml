@@ -33,11 +33,11 @@ gridflag=0
 !precip_latwidth=0.15
 !precip_lonwidth=0.25
 
-Efield_latwidth=0.02 !0.0125, 0.05 standar
+Efield_latwidth=0.05 !0.0125, 0.05 standar
 Efield_lonwidth=0.15
 Jtarg=1.2e-6
-Jtarg_function = "fac_said"
-eq_dir = '/mnt/f/gemini3druns/saidcurv_eq_230503'
+Jtarg_function = 'fac_said_gaussian'
+eq_dir = '/mnt/f/gemini3druns/230503_saidcurv_eq'
 /
 
 &files
@@ -52,13 +52,13 @@ E0_dir = 'inputs/fields/'
 /
 
 !&precip
-!dtprec = 5.0
+!dtprec = 15.0
 !prec_dir = 'inputs/precip/'
 !/
 
 
 &precip_BG
-PhiWBG=0.014                   ! total energy flux (mW/m^2) 0.08
+PhiWBG=0.04                   ! total energy flux (mW/m^2) 0.08
 W0BG=1e3                      ! characteristic energy (eV)
 /
 

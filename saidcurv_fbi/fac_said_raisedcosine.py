@@ -2,7 +2,7 @@ import xarray
 import numpy as np
 
 
-def fac_said(E: xarray.Dataset, gridflag: int, flagdip: bool) -> xarray.Dataset:
+def fac_said_raisedcosine(E: xarray.Dataset, gridflag: int, flagdip: bool) -> xarray.Dataset:
     """
     for 3D sim, FAC up/down 0.5 degree FWHM
     """
@@ -11,8 +11,8 @@ def fac_said(E: xarray.Dataset, gridflag: int, flagdip: bool) -> xarray.Dataset:
         raise ValueError("for 3D sims only")
 
     # nonuniform in longitude
-    beta=0.75
-    T=1/30
+    beta=0.8
+    T=1/20
     f=E.mlon-E.mlonmean
     shapelon=0*f
 
@@ -26,9 +26,9 @@ def fac_said(E: xarray.Dataset, gridflag: int, flagdip: bool) -> xarray.Dataset:
 
 
     # nonuniform in latitude
-    shapelat = -np.exp(
+    shapelat = -0.7*np.exp(
         -((E.mlat - E.mlatmean - 1.5 * E.mlatsig) ** 2) / 2 / E.mlatsig ** 2
-    ) + 0.7*np.exp(-((E.mlat - E.mlatmean + 1.5 * E.mlatsig) ** 2) / 2 / E.mlatsig ** 2)
+    ) + 1.0*np.exp(-((E.mlat - E.mlatmean + 1.5 * E.mlatsig) ** 2) / 2 / E.mlatsig ** 2)
 
     for t in E.time[2:]:
         E["flagdirich"].loc[t] = 0

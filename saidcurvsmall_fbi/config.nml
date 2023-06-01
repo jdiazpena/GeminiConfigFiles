@@ -3,11 +3,11 @@
 &base
 ymd = 2008,3,26               ! year, month, day
 UTsec0 = 75600.0              ! start time in UT seconds
-tdur = 630.0                  ! duration of simulation in seconds
+tdur = 900.0                  ! duration of simulation in seconds
 dtout = 15.0                  ! how often to do file output
 activ = 150.0,150.0,4.0       ! f107a,f107,Ap
 tcfl = 0.9                    ! target cfl number
-Teinf = 0.0                ! exospheric electron temperature-0.5e-8 (w/m2) -0.6e-5 
+Teinf = 0                ! exospheric electron temperature-0.5e-8 (w/m2) -0.6e-5 
 /
 
 &flags
@@ -57,9 +57,9 @@ E0_dir = 'inputs/fields/'
 !/
 
 
-!&precip_BG
-!PhiWBG=0.014                   ! total energy flux (mW/m^2) 0.08
-!W0BG=1e3                      ! characteristic energy (eV)
+&precip_BG
+PhiWBG=0.014                   ! total energy flux (mW/m^2) 0.08
+W0BG=1e3                      ! characteristic energy (eV)
 /
 
 &diffusion
