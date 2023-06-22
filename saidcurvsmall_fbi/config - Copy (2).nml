@@ -7,7 +7,7 @@ tdur = 3600.0                  ! duration of simulation in seconds
 dtout = 15.0                  ! how often to do file output
 activ = 150.0,150.0,4.0       ! f107a,f107,Ap
 tcfl = 0.9                    ! target cfl number
-Teinf = 0.0                ! exospheric electron temperature-0.5e-8 (w/m2) -0.6e-5 
+Teinf = 0                ! exospheric electron temperature-0.5e-8 (w/m2) -0.6e-5 
 /
 
 &flags
@@ -17,10 +17,10 @@ flagoutput = 1      ! 1 - full parameter output
 /
 
 &setup
-dtheta=10.5
-dphi=100
+dtheta=7
+dphi=70
 lp=128
-lq=128
+lq=128 !128 256
 lphi=96
 altmin=80e3
 glat=60
@@ -33,12 +33,13 @@ gridflag=0
 !precip_latwidth=0.15
 !precip_lonwidth=0.25
 
-Efield_latwidth=0.05 !0.0125, 0.05 standar
+Efield_latwidth=0.025 !0.0125, 0.05 standar
 Efield_lonwidth=0.15
 Jtarg=0.8e-6
-!Jtarg_function = 'fac_said_gaussian'
-Jtarg_function = 'fac_said_raisedcosine'
-eq_dir = '/mnt/f/gemini3druns/eq/230503_saidcurv_eq'
+!Jtarg_function = "fac_said_gaussian"
+Jtarg_function = "fac_said_raisedcosine.py"
+!eq_dir = '/mnt/f/gemini3druns/eq/230608_saidcurvsmall_eq_5e5_3e3' 
+eq_dir = '/mnt/f/gemini3druns/eq/230501_saidcurvsmall_eq'
 /
 
 &files
@@ -53,13 +54,13 @@ E0_dir = 'inputs/fields/'
 /
 
 !&precip
-!dtprec = 15.0
+!dtprec = 5.0
 !prec_dir = 'inputs/precip/'
 !/
 
 
 &precip_BG
-PhiWBG=0.08                   ! total energy flux (mW/m^2) 0.08
+PhiWBG=0.014                   ! total energy flux (mW/m^2) 0.08 0.014
 W0BG=1e3                      ! characteristic energy (eV)
 /
 

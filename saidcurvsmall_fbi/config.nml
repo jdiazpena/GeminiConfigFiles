@@ -20,7 +20,7 @@ flagoutput = 1      ! 1 - full parameter output
 dtheta=7
 dphi=70
 lp=128
-lq=128
+lq=128 !128 256
 lphi=96
 altmin=80e3
 glat=60
@@ -35,9 +35,11 @@ gridflag=0
 
 Efield_latwidth=0.025 !0.0125, 0.05 standar
 Efield_lonwidth=0.15
-Jtarg=1.2e-6
+Jtarg=10.0e-6
 Jtarg_function = "fac_said_gaussian"
-eq_dir = '/mnt/f/gemini3druns/saidcurvsmall_eq_230501'
+!Jtarg_function = "fac_said_raisedcosine.py"
+!eq_dir = '/mnt/f/gemini3druns/eq/230608_saidcurvsmall_eq_5e5_3e3' 
+eq_dir = '/mnt/f/gemini3druns/eq/230501_saidcurvsmall_eq'
 /
 
 &files
@@ -58,7 +60,7 @@ E0_dir = 'inputs/fields/'
 
 
 &precip_BG
-PhiWBG=0.014                   ! total energy flux (mW/m^2) 0.08
+PhiWBG=4                   ! total energy flux (mW/m^2) 0.08 0.014
 W0BG=1e3                      ! characteristic energy (eV)
 /
 

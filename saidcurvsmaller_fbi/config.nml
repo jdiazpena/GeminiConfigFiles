@@ -33,11 +33,11 @@ gridflag=0
 !precip_latwidth=0.15
 !precip_lonwidth=0.25
 
-Efield_latwidth=0.025 !0.0125, 0.05 standar
+Efield_latwidth=0.035 !0.0125, 0.05 standar
 Efield_lonwidth=0.15
 Jtarg=1.2e-6
 Jtarg_function = "fac_said_gaussian"
-eq_dir = '/mnt/f/gemini3druns/saidcurvsmall_eq_230501'
+eq_dir = '/mnt/f/gemini3druns/230501_saidcurvsmall_eq'
 /
 
 &files

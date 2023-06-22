@@ -11,8 +11,8 @@ def fac_said_raisedcosine(E: xarray.Dataset, gridflag: int, flagdip: bool) -> xa
         raise ValueError("for 3D sims only")
 
     # nonuniform in longitude
-    beta=0.8
-    T=1/20
+    beta=0.7
+    T=1/25
     f=E.mlon-E.mlonmean
     shapelon=0*f
 
