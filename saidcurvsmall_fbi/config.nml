@@ -3,11 +3,11 @@
 &base
 ymd = 2008,3,26               ! year, month, day
 UTsec0 = 75600.0              ! start time in UT seconds
-tdur = 900.0                  ! duration of simulation in seconds
+tdur = 3600.0                  ! duration of simulation in seconds
 dtout = 15.0                  ! how often to do file output
 activ = 150.0,150.0,4.0       ! f107a,f107,Ap
 tcfl = 0.9                    ! target cfl number
-Teinf = 0                ! exospheric electron temperature-0.5e-8 (w/m2) -0.6e-5 
+Teinf = 2000                ! exospheric electron temperature-0.5e-8 (w/m2) -0.6e-5 
 /
 
 &flags
@@ -35,7 +35,7 @@ gridflag=0
 
 Efield_latwidth=0.025 !0.0125, 0.05 standar
 Efield_lonwidth=0.15
-Jtarg=10.0e-6
+Jtarg=0.8e-6
 Jtarg_function = "fac_said_gaussian"
 !Jtarg_function = "fac_said_raisedcosine.py"
 !eq_dir = '/mnt/f/gemini3druns/eq/230608_saidcurvsmall_eq_5e5_3e3' 
@@ -60,7 +60,7 @@ E0_dir = 'inputs/fields/'
 
 
 &precip_BG
-PhiWBG=4                   ! total energy flux (mW/m^2) 0.08 0.014
+PhiWBG=0.014                   ! total energy flux (mW/m^2) 0.08 0.014
 W0BG=1e3                      ! characteristic energy (eV)
 /
 
