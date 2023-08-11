@@ -2,7 +2,7 @@ import xarray
 import numpy as np
 
 
-def fac_said_gaussian(E: xarray.Dataset, gridflag: int, flagdip: bool) -> xarray.Dataset:
+def fac_said_gaussian_ramp(E: xarray.Dataset, gridflag: int, flagdip: bool) -> xarray.Dataset:
     """
     for 3D sim, FAC up/down 0.5 degree FWHM
     """
@@ -27,7 +27,7 @@ def fac_said_gaussian(E: xarray.Dataset, gridflag: int, flagdip: bool) -> xarray
     auxtime=E.time[int(np.floor(auxlength))]
 
 
-    for t in range(2,auxlength+1):
+    for t in range(1,auxlength+1):
         E["flagdirich"].loc[E.time[t]] = 0
         k = "Vminx1it" if gridflag == 1 else "Vmaxx1it"
 

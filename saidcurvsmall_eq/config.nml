@@ -2,18 +2,28 @@
 
 &base
 ymd = 2008,3,25               ! year, month, day
-UTsec0 = 75600.0              ! start time in UT seconds
+UTsec0 = 81000.0              ! start time in UT seconds
 tdur = 86400.0                  ! duration of simulation in seconds
 dtout = 3600.0                  ! how often to do file output
-activ = 150.0,150.0,4.0       ! f107a,f107,Ap
+activ = 80.0,80.0,4.0       ! f107a,f107,Ap
 tcfl = 0.9                    ! target cfl number
-Teinf = 1500.0                ! exospheric electron temperature
+Teinf = 800                ! exospheric electron temperature
 /
 
 &flags
 potsolve = 0        ! solve electrodynamics:   0 - no; 1 - electrostatic; 2 - inductive
 flagperiodic = 0    ! whether periodic
 flagoutput = 1      ! 1 - full parameter output
+/
+
+! Optional - default off 0 - no FBI. 1 - includes only EAH. 2 - Includes EAH and NLC
+&FBI 
+flagFBI = 0  
+/
+
+! Optional - default on 1. 0 - uses old vib and rot losses
+&evibcool 
+flagevibcool = 1  
 /
 
 &setup
@@ -37,6 +47,6 @@ indat_file = 'inputs/initial_conditions.h5'
 /
 
 &precip_BG
-PhiWBG=5e-7                   ! total energy flux (mW/m^2)
-W0BG=3e3                      ! characteristic energy (eV)
+PhiWBG=1.25e-3                   ! total energy flux (mW/m^2)
+W0BG=2.0e3                      ! characteristic energy (eV)
 /
