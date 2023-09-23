@@ -33,7 +33,7 @@ flagevibcool = 1
 
 &setup
 dtheta=6
-dphi=70
+dphi=40
 lp=128 !lat 128
 lq=512 !alt 128 256 512
 lphi=32 !lon 128 always do a multiple of 16 here to use all cores
