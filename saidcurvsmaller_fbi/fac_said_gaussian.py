@@ -17,7 +17,7 @@ def fac_said_gaussian(E: xarray.Dataset, gridflag: int, flagdip: bool) -> xarray
     
 
     # nonuniform in latitude
-    shapelat = -0.7*np.exp(
+    shapelat = -1.0*np.exp(
         -((E.mlat - E.mlatmean - 1.5 * E.mlatsig) ** 2) / 2 / E.mlatsig ** 2
     ) + 1.0*np.exp(-((E.mlat - E.mlatmean + 1.5 * E.mlatsig) ** 2) / 2 / E.mlatsig ** 2)
 

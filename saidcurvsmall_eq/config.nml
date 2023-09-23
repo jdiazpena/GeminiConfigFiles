@@ -47,6 +47,6 @@ indat_file = 'inputs/initial_conditions.h5'
 /
 
 &precip_BG
-PhiWBG=1.25e-3                   ! total energy flux (mW/m^2)
-W0BG=2.0e3                      ! characteristic energy (eV)
+PhiWBG=3.0e-3                   ! total energy flux (mW/m^2)
+W0BG=2e3                      ! characteristic energy (eV)
 /

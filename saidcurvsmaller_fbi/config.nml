@@ -2,30 +2,45 @@
 
 &base
 ymd = 2008,3,26               ! year, month, day
-UTsec0 = 75600.0              ! start time in UT seconds
-tdur = 900.0                  ! duration of simulation in seconds
-dtout = 15.0                  ! how often to do file output
-activ = 150.0,150.0,4.0       ! f107a,f107,Ap
+UTsec0 = 81000.0              ! start time in UT seconds
+tdur = 720.0                  ! duration of simulation in seconds
+dtout = 5.0                  ! how often to do file output
+activ = 80.0,80.0,4.0       ! f107a,f107,Ap
 tcfl = 0.9                    ! target cfl number
-Teinf = 0                ! exospheric electron temperature-0.5e-8 (w/m2) -0.6e-5 
+Teinf = 800                 ! exospheric electron temperature-0.5e-8 (w/m2) -0.6e-5 
 /
+
+! (optional - default off) whether or not to do milestone outputs; only works with h5 file output
+!&milestone
+!mcadence=6                   ! number of outputs per milestone
+!/
 
 &flags
 potsolve = 1        ! solve electrodynamics:   0 - no; 1 - electrostatic; 2 - inductive
 flagperiodic = 0    ! whether periodic
-flagoutput = 1      ! 1 - full parameter output
+flagoutput = 1      ! 1 - all state variables; 2 - averaged plasma parameters; 3 - electron density only
+/
+
+! Optional - default off 0 - no FBI. 1 - includes only EAH. 2 - Includes EAH and NLC
+&FBI 
+flagFBI = 0
+/
+
+! Optional - default on 1. 0 - uses old vib and rot losses
+&evibcool 
+flagevibcool = 1  
 /
 
 &setup
-dtheta=4
-dphi=40
-lp=128
-lq=128
-lphi=96
+dtheta=6
+dphi=70
+lp=128 !lat 128
+lq=512 !alt 128 256 512
+lphi=32 !lon 128 always do a multiple of 16 here to use all cores
 altmin=80e3
 glat=60
 glon=0
-gridflag=0
+gridflag=0 !0 - closed dipole, 1 - non-inverted grid, 2 - inverted grid
 
 !E0precip=300
 !Qprecip=1
@@ -33,11 +48,14 @@ gridflag=0
 !precip_latwidth=0.15
 !precip_lonwidth=0.25
 
-Efield_latwidth=0.035 !0.0125, 0.05 standar
-Efield_lonwidth=0.15
-Jtarg=1.2e-6
-Jtarg_function = "fac_said_gaussian"
-eq_dir = '/mnt/f/gemini3druns/230501_saidcurvsmall_eq'
+Efield_latwidth=0.015 !0.0125, 0.05 standar
+Efield_lonwidth=0.2 !0.15
+
+Jtarg=0.15e-6
+Jtarg_function = "fac_said_gaussian_ramp"
+
+!Jtarg_function = "fac_said_raisedcosine.py"
+eq_dir = '/mnt/g/gemini3druns/eq/230922_saidcurvsmaller_eq_80f3e32e3_mattfix/'
 /
 
 &files
@@ -47,7 +65,7 @@ indat_file = 'inputs/initial_conditions.h5'
 /
 
 &efield
-dtE0 = 15.0                         ! time step between electric field file inputs
+dtE0 = 10.0                         ! time step between electric field file inputs
 E0_dir = 'inputs/fields/'
 /
 
@@ -58,10 +76,10 @@ E0_dir = 'inputs/fields/'
 
 
 &precip_BG
-PhiWBG=0.014                   ! total energy flux (mW/m^2) 0.08
-W0BG=1e3                      ! characteristic energy (eV)
+PhiWBG=3.0e-3                   ! total energy flux (mW/m^2) 0.08 0.014
+W0BG=2e3                      ! characteristic energy (eV)
 /
 
-&diffusion
-diffsolvetype = 2             ! type of diffusion solver to use:  1 - backward Euler; 2 - TRBDF2
+&diffusion only use 1 for mattfix, 2 for fbimain
+diffsolvetype = 1             ! type of diffusion solver to use:  1 - backward Euler; 2 - TRBDF2
 /
