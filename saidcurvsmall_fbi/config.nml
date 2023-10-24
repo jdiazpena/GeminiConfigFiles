@@ -40,7 +40,7 @@ lphi=32 !lon 128 always do a multiple of 16 here to use all cores
 altmin=80e3
 glat=60
 glon=0
-gridflag=2 !0 - closed dipole, 1 - non-inverted grid, 2 - inverted grid
+gridflag=0 !0 - closed dipole, 1 - non-inverted grid, 2 - inverted grid
 
 !E0precip=300
 !Qprecip=1

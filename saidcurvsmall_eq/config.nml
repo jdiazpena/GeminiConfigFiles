@@ -46,7 +46,7 @@ indat_grid = 'inputs/simgrid.h5'
 indat_file = 'inputs/initial_conditions.h5'
 /
 
-&precip_BG
-PhiWBG=3.0e-3                   ! total energy flux (mW/m^2)
-W0BG=2e3                      ! characteristic energy (eV)
+!&precip_BG
+!PhiWBG=3.0e-3                   ! total energy flux (mW/m^2)
+!W0BG=2e3                      ! characteristic energy (eV)
 /

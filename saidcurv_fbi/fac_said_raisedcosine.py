@@ -12,7 +12,7 @@ def fac_said_raisedcosine(E: xarray.Dataset, gridflag: int, flagdip: bool) -> xa
 
     # nonuniform in longitude
     beta=0.7
-    T=1/30
+    T=1/25
     f=E.mlon-E.mlonmean
     shapelon=0*f
 

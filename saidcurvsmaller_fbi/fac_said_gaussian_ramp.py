@@ -11,9 +11,23 @@ def fac_said_gaussian_ramp(E: xarray.Dataset, gridflag: int, flagdip: bool) -> x
         raise ValueError("for 3D sims only")
 
     # nonuniform in longitude
-    shapelon = np.exp(
-        -((E.mlon - E.mlonmean) ** 2) / 2 / E.mlonsig ** 2
-    )
+    #shapelon = np.exp(
+    #    -((E.mlon - E.mlonmean) ** 2) / 2 / E.mlonsig ** 2
+    #)
+
+    # nonuniform in longitude
+    beta=0.7
+    T=1/25
+    f=E.mlon-E.mlonmean
+    shapelon=0*f
+
+    for i in range(len(f)):
+        if abs(f[i])<(1-beta)/(2*T):
+            shapelon[i]=1
+        elif (1-beta)/(2*T)<abs(f[i]) and abs(f[i])<(1+beta)/(2*T):
+            shapelon[i]=0.5*(1+np.cos( (np.pi*T/beta)*(abs(f[i])-(1-beta)/(2*T)) ))
+        else:
+            shapelon[i]=0
     
 
     # nonuniform in latitude
@@ -23,7 +37,7 @@ def fac_said_gaussian_ramp(E: xarray.Dataset, gridflag: int, flagdip: bool) -> x
 
     aux=E.time[1:]
     auxlength=aux.shape[0]
-    auxlengthcenter=np.floor(aux.shape[0]/10)
+    auxlengthcenter=np.floor(aux.shape[0])
     auxtime=E.time[int(np.floor(auxlength))]
 
 

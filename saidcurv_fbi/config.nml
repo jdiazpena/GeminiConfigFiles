@@ -2,12 +2,12 @@
 
 &base
 ymd = 2008,3,26               ! year, month, day
-UTsec0 = 75600.0              ! start time in UT seconds
-tdur = 3600.0                  ! duration of simulation in seconds
-dtout = 15.0                  ! how often to do file output
-activ = 150.0,150.0,4.0       ! f107a,f107,Ap
+UTsec0 = 81000.0              ! start time in UT seconds
+tdur = 720.0                  ! duration of simulation in seconds
+dtout = 10.0                  ! how often to do file output
+activ = 80.0,80.0,4.0       ! f107a,f107,Ap
 tcfl = 0.9                    ! target cfl number
-Teinf = 0.0                ! exospheric electron temperature-0.5e-8 (w/m2) -0.6e-5 
+Teinf = 1500.0                 ! exospheric electron temperature-0.5e-8 (w/m2) -0.6e-5 
 /
 
 &flags
@@ -16,29 +16,28 @@ flagperiodic = 0    ! whether periodic
 flagoutput = 1      ! 1 - full parameter output
 /
 
+! Optional - default off 0 - no FBI. 1 - includes only EAH. 2 - Includes EAH and NLC
+&FBI 
+flagFBI = 1
+/
+
 &setup
 dtheta=10.5
 dphi=100
 lp=128
-lq=128
-lphi=96
+lq=512
+lphi=128
 altmin=80e3
 glat=60
 glon=0
 gridflag=0
 
-!E0precip=300
-!Qprecip=1
-!Qprecip_background=0.01
-!precip_latwidth=0.15
-!precip_lonwidth=0.25
-
-Efield_latwidth=0.05 !0.0125, 0.05 standar
+Efield_latwidth=0.015 !0.0125, 0.05 standar
 Efield_lonwidth=0.15
-Jtarg=0.8e-6
+Jtarg=0.45e-6
 !Jtarg_function = 'fac_said_gaussian'
-Jtarg_function = 'fac_said_raisedcosine'
-eq_dir = '/mnt/f/gemini3druns/eq/230503_saidcurv_eq'
+Jtarg_function = "fac_said_gaussian_ramp"
+eq_dir = '/mnt/g/gemini3druns/eq/231016_saidcurv_eq_80fnoBG_jmdp'
 /
 
 &files
@@ -48,7 +47,7 @@ indat_file = 'inputs/initial_conditions.h5'
 /
 
 &efield
-dtE0 = 15.0                         ! time step between electric field file inputs
+dtE0 = 30.0                         ! time step between electric field file inputs
 E0_dir = 'inputs/fields/'
 /
 
@@ -58,11 +57,11 @@ E0_dir = 'inputs/fields/'
 !/
 
 
-&precip_BG
-PhiWBG=0.08                   ! total energy flux (mW/m^2) 0.08
-W0BG=1e3                      ! characteristic energy (eV)
-/
+!&precip_BG
+!PhiWBG=0.08                   ! total energy flux (mW/m^2) 0.08
+!W0BG=1e3                      ! characteristic energy (eV)
+!/
 
 &diffusion
-diffsolvetype = 2             ! type of diffusion solver to use:  1 - backward Euler; 2 - TRBDF2
+diffsolvetype = 1             ! type of diffusion solver to use:  1 - backward Euler; 2 - TRBDF2
 /
