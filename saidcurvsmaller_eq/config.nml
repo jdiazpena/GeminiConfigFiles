@@ -5,7 +5,7 @@ ymd = 2008,3,25               ! year, month, day
 UTsec0 = 81000.0              ! start time in UT seconds
 tdur = 86400.0                  ! duration of simulation in seconds
 dtout = 3600.0                  ! how often to do file output
-activ = 45.0,45.0,4.0       ! f107a,f107,Ap
+activ = 90.0,90.0,4.0       ! f107a,f107,Ap
 tcfl = 0.9                    ! target cfl number
 Teinf = 1000                ! exospheric electron temperature
 /
@@ -34,7 +34,7 @@ dphi=45
 lp=48
 lq=128
 lphi=16
-altmin=50e3
+altmin=80e3
 glat=60
 glon=0
 gridflag=0 !0 - closed dipole, 1 - non-inverted grid, 2 - inverted grid
@@ -49,6 +49,6 @@ indat_file = 'inputs/initial_conditions.h5'
 /
 
 &precip_BG
-PhiWBG=3.0e-3                   ! total energy flux (mW/m^2)
-W0BG=2.2e3                      ! characteristic energy (eV)
+PhiWBG=6.0e-3                   ! total energy flux (mW/m^2)
+W0BG=1.75e3                      ! characteristic energy (eV)
 /
