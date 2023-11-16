@@ -4,21 +4,21 @@
 ymd = 2008,3,26               ! year, month, day
 UTsec0 = 81000.0              ! start time in UT seconds
 tdur = 900.0                  ! duration of simulation in seconds
-dtout = 5.0                  ! how often to do file output
+dtout = 30.0                  ! how often to do file output
 activ = 90.0,90.0,4.0       ! f107a,f107,Ap
 tcfl = 0.9                    ! target cfl number
 Teinf = 1000                 ! exospheric electron temperature-0.5e-8 (w/m2) -0.6e-5 
 /
 
 ! (optional - default off) whether or not to do milestone outputs; only works with h5 file output
-&milestone
-mcadence=6                   ! number of outputs per milestone
-/
+!&milestone
+!mcadence=6                   ! number of outputs per milestone
+!/
 
 &flags
 potsolve = 1        ! solve electrodynamics:   0 - no; 1 - electrostatic; 2 - inductive
 flagperiodic = 0    ! whether periodic
-flagoutput = 2      ! 1 - all state variables; 2 - averaged plasma parameters; 3 - electron density only
+flagoutput = 1      ! 1 - all state variables; 2 - averaged plasma parameters; 3 - electron density only
 /
 
 ! Optional - default off 0 - no FBI. 1 - includes only EAH. 2 - Includes EAH and NLC
@@ -36,7 +36,7 @@ dtheta=6
 dphi=40
 lp=128 !lat 128
 lq=512 !alt 128 256 512
-lphi=128 !lon 128 always do a multiple of 16 here to use all cores
+lphi=1 !lon 128 always do a multiple of 16 here to use all cores
 altmin=80e3
 glat=60
 glon=0
@@ -52,9 +52,9 @@ Efield_latwidth=0.015 !0.0125, 0.05 standar
 Efield_lonwidth=0.2 !0.15
 
 Jtarg=0.80e-6
-Jtarg_function = "fac_said_gaussian_ramp"
+Jtarg_function = "fac_said_gaussian_ramp_2d"
 !Jtarg_function = "fac_said_raisedcosine.py"
-eq_dir = '/mnt/g/gemini3druns/eq/231027_saidcurv_eq_90f175e3CE6e3TE_jmdp/'
+eq_dir = '/mnt/g/gemini3druns/eq/231115_saidcurvsmall_2d_90f175e3CE6e3TE/'
 /
 
 &files
@@ -64,7 +64,7 @@ indat_file = 'inputs/initial_conditions.h5'
 /
 
 &efield
-dtE0 = 10.0                         ! time step between electric field file inputs
+dtE0 = 30.0                         ! time step between electric field file inputs
 E0_dir = 'inputs/fields/'
 /
 
