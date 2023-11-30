@@ -37,7 +37,7 @@ def fac_said_gaussian_ramp(E: xarray.Dataset, gridflag: int, flagdip: bool) -> x
 
     aux=E.time[1:]
     auxlength=aux.shape[0]
-    auxlengthcenter=np.floor(aux.shape[0]/5)
+    auxlengthcenter=np.floor(aux.shape[0]/3)
     auxtime=E.time[int(np.floor(auxlength))]
 
 
