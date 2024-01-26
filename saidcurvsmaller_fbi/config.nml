@@ -3,8 +3,8 @@
 &base
 ymd = 2008,3,26               ! year, month, day
 UTsec0 = 81000.0              ! start time in UT seconds
-tdur = 1800.0                  ! duration of simulation in seconds
-dtout = 5.0                  ! how often to do file output
+tdur = 900.0                  ! duration of simulation in seconds
+dtout = 1.0                  ! how often to do file output
 activ = 90.0,90.0,4.0       ! f107a,f107,Ap
 tcfl = 0.9                    ! target cfl number
 Teinf = 1000                 ! exospheric electron temperature-0.5e-8 (w/m2) -0.6e-5 
@@ -12,7 +12,7 @@ Teinf = 1000                 ! exospheric electron temperature-0.5e-8 (w/m2) -0.
 
 ! (optional - default off) whether or not to do milestone outputs; only works with h5 file output
 !&milestone
-!mcadence=6                   ! number of outputs per milestone
+!mcadence=3                   ! number of outputs per milestone
 !/
 
 &flags
@@ -34,9 +34,9 @@ flagevibcool = 1
 &setup
 dtheta=6
 dphi=40
-lp=128 !lat 128
-lq=256 !alt 128 256 512
-lphi=64 !lon 128 always do a multiple of 16 here to use all cores
+lp=512 !lat 128
+lq=512 !alt 128 256 512
+lphi=192 !lon 128 always do a multiple of 16 here to use all cores
 altmin=80e3
 glat=60
 glon=0
@@ -51,9 +51,9 @@ gridflag=0 !0 - closed dipole, 1 - non-inverted grid, 2 - inverted grid
 Efield_latwidth=0.015 !0.0125, 0.05 standar
 Efield_lonwidth=0.2 !0.15
 
-Jtarg=0.40e-6
-Jtarg_function = "fac_said_gaussian_ramp"
-!Jtarg_function = "fac_said_raisedcosine.py"
+Jtarg=0.8e-6
+!Jtarg_function = "fac_said_gaussian_ramp"
+Jtarg_function = "fac_said_raisedcosine"
 eq_dir = '/mnt/g/gemini3druns/eq/231027_saidcurv_eq_90f175e3CE6e3TE_jmdp/'
 /
 
@@ -64,7 +64,7 @@ indat_file = 'inputs/initial_conditions.h5'
 /
 
 &efield
-dtE0 = 10.0                         ! time step between electric field file inputs
+dtE0 = 6.0                         ! time step between electric field file inputs
 E0_dir = 'inputs/fields/'
 /
 
@@ -74,10 +74,10 @@ E0_dir = 'inputs/fields/'
 !/
 
 
-&precip_BG
-PhiWBG=6.0e-3                   ! total energy flux (mW/m^2) 0.08 0.014
-W0BG=1.75e3                      ! characteristic energy (eV)
-/
+!&precip_BG
+!PhiWBG=6.0e-3                   ! total energy flux (mW/m^2) 0.08 0.014
+!W0BG=1.75e3                      ! characteristic energy (eV)
+!/
 
 &diffusion !only use 1 for mattfix, 2 for fbimain
 diffsolvetype = 1             ! type of diffusion solver to use:  1 - backward Euler; 2 - TRBDF2

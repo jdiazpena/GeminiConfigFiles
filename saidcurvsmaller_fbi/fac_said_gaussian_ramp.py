@@ -16,8 +16,8 @@ def fac_said_gaussian_ramp(E: xarray.Dataset, gridflag: int, flagdip: bool) -> x
     # )
 
     # nonuniform in longitude
-    beta=0.7
-    T=1/25
+    beta=0.5
+    T=1/22.5
     f=E.mlon-E.mlonmean
     shapelon=0*f
 
@@ -37,7 +37,7 @@ def fac_said_gaussian_ramp(E: xarray.Dataset, gridflag: int, flagdip: bool) -> x
 
     aux=E.time[1:]
     auxlength=aux.shape[0]
-    auxlengthcenter=np.floor(aux.shape[0]/3)
+    auxlengthcenter=np.floor(aux.shape[0]/15)
     auxtime=E.time[int(np.floor(auxlength))]
 
 
